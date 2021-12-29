@@ -1,0 +1,17 @@
+{
+  "name": "nepremicnine-web-scraper",
+  "version": "1.0.0",
+  "description": "Web scraper for nepremicnine.net",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "Tamara Golobič",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.24.0",
+    "cheerio": "^1.0.0-rc.10",
+    "dotenv": "^10.0.0",
+    "request": "^2.88.2"
+  }
+}
