@@ -12,6 +12,8 @@
     "axios": "^0.24.0",
     "cheerio": "^1.0.0-rc.10",
     "dotenv": "^10.0.0",
+    "mysql": "^2.18.1",
     "request": "^2.88.2"
-  }
+  },
+  "type": "module"
 }
