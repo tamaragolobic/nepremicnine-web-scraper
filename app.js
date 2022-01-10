@@ -1,4 +1,4 @@
-import {DatabaseController} from "./DatabaseController.js";
+import DatabaseController from "./DatabaseController.js";
 import axios from "axios";
 import cheerio from "cheerio";
 import dotenv from "dotenv";
@@ -36,6 +36,14 @@ async function getUrl() {
         console.error(error);
     }
 }
+
+db.select({
+    table: 'Ads',
+    columns: ['Url', 'Title'],
+    conditions: [{
+        Title: 'ČRNUČE'
+    }]
+})
 
 const writeToFile = (data) => {
     let fileData = '';
