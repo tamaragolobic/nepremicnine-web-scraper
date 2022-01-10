@@ -18,7 +18,7 @@ const DatabaseController = () => {
     });
 
     const insert = ({table, data = []}) => {
-        if(!data.length) {
+        if (!data.length) {
             return;
         }
         let values = '';
@@ -51,9 +51,36 @@ const DatabaseController = () => {
         });
     }
 
+    const select = ({table, columns = [], conditions = []}) => {
+        let conditionSql = '';
+
+        for (const condition of conditions) {
+            for (const key of Object.keys(condition)) {
+                if (conditionSql.length !== 0) {
+                    conditionSql += ' AND ';
+                }
+                conditionSql += `${key} = ${db.escape(condition[key])}`;
+            }
+        }
+
+        let sql = `SELECT ${columns.length ? columns.join(',') : '*'}
+                   FROM ${table}`
+
+        if (conditions) {
+            sql += ` WHERE ${conditionSql}`;
+        }
+
+        db.query(sql, function (err) {
+            if (err) {
+                throw err;
+            }
+        });
+    }
+
     return {
-        insert
+        insert,
+        select
     }
 }
 
-export {DatabaseController};
+export default DatabaseController;
